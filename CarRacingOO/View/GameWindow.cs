@@ -19,7 +19,8 @@ namespace CarRacingOO.View
             Title = "Car racing OO";
             var canvas = new Canvas
             {
-                Background = new SolidColorBrush(Colors.Gray)
+                Background = new SolidColorBrush(Colors.Gray),
+                Focusable = true
             };
 
             canvas.KeyDown += UpdateKeys;
@@ -42,7 +43,7 @@ namespace CarRacingOO.View
         }
 
         private static Rectangle CreateRectangle(Color color, int width = 55, int height = 80)
-            => new Rectangle { Fill = new SolidColorBrush(color), Height = height, Width = width };
+            => new() { Fill = new SolidColorBrush(color), Height = height, Width = width };
 
         public void SetPlayerX(int playerX)
         {
