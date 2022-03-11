@@ -9,43 +9,44 @@ namespace CarRacingOO.View
 {
     internal class GameWindow : Window
     {
-        private Canvas _canvas;
+        private readonly Rectangle _player;
+        private readonly GamePresenter _presenter;
 
         public GameWindow()
         {
             Width = 525;
             Height = 517;
             Title = "Car racing OO";
-            _canvas = new Canvas
+            var canvas = new Canvas
             {
                 Background = new SolidColorBrush(Colors.Gray)
             };
 
-            _canvas.KeyDown += CanvasKeyDown;
-            _canvas.KeyUp += CanvasKeyUp;
-            Reset();
-            var gamePresenter = new GamePresenter(this);
-            gamePresenter.Start();
+            canvas.KeyDown += UpdateKeys;
+            canvas.KeyUp += UpdateKeys;
+            canvas.Children.Clear();
+            _player = CreateRectangle(Colors.Yellow);
+            Canvas.SetTop(_player, 374);
+            canvas.Children.Add(canvas);
+            Content = canvas;
+            _presenter = new GamePresenter(this);
+            _presenter.Start();
         }
 
-        private void CanvasKeyDown(object sender, KeyEventArgs e)
+        private void UpdateKeys(object sender, KeyEventArgs e)
         {
-        }
-
-        private void CanvasKeyUp(object sender, KeyEventArgs e)
-        {
-        }
-
-        private void Reset()
-        {
-            _canvas.Children.Clear();
-            var player = CreateRectangle(Colors.Yellow);
-            Canvas.SetTop(player, 374);
-            _canvas.Children.Add(_canvas);
-
+            if (e.Key is Key.Left or Key.Right)
+            {
+                _presenter.SetMove(e.Key == Key.Left, e.IsDown);
+            }
         }
 
         private static Rectangle CreateRectangle(Color color, int width = 55, int height = 80)
             => new Rectangle { Fill = new SolidColorBrush(color), Height = height, Width = width };
+
+        public void SetPlayerX(int playerX)
+        {
+            Canvas.SetLeft(_player, playerX);
+        }
     }
 }

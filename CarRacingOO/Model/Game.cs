@@ -8,9 +8,14 @@
 
         public Game()
         {
-            Player = new Player();
+            Player = new Player(222, 525);
             Cars = new[] { new Car(), new Car() };
             Star = new Star();
+        }
+
+        public void GameLoop()
+        {
+            Player.Move();
         }
     }
 }

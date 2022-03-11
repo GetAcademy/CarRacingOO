@@ -1,12 +1,32 @@
-﻿namespace CarRacingOO.Model
+﻿using System;
+
+namespace CarRacingOO.Model
 {
     internal class Player
     {
-        public int X { get; }
+        public int X { get; private set; }
+        private Direction _direction;
+        private int _speed;
+        private readonly int _maxX;
 
-        public Player()
+        public Player(int startX, int maxX)
         {
-            X = 222;
+            _maxX = maxX;
+            X = startX;
+            _speed = 10;
+        }
+
+        public void SetDirection(bool isLeft, bool isMove)
+        {
+            _direction = !isMove ? Direction.None :
+                          isLeft ? Direction.Left : 
+                          Direction.Right;
+        }
+
+        public void Move()
+        {
+            var delta = _speed * (int) _direction;
+            X = Math.Clamp(X + delta, 0, _maxX);
         }
     }
 }

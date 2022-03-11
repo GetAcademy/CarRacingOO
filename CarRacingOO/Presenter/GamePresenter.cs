@@ -16,7 +16,7 @@ namespace CarRacingOO.Presenter
             _gameWindow = gameWindow;
             _game = new Game();
             _timer = new DispatcherTimer();
-            _timer.Tick += GameLoop;
+            _timer.Tick += Update;
             _timer.Interval = TimeSpan.FromMilliseconds(20);
         }
 
@@ -25,9 +25,15 @@ namespace CarRacingOO.Presenter
             _timer.Start();
         }
 
-        private void GameLoop(object? sender, EventArgs e)
+        private void Update(object? sender, EventArgs e)
         {
+            _game.GameLoop();
             _gameWindow.SetPlayerX(_game.Player.X);
+        }
+
+        public void SetMove(bool isLeft, bool isMove)
+        {
+            _game.Player.SetDirection(isLeft, isMove);
         }
     }
 }
