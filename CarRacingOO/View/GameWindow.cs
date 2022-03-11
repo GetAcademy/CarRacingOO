@@ -27,7 +27,7 @@ namespace CarRacingOO.View
             canvas.Children.Clear();
             _player = CreateRectangle(Colors.Yellow);
             Canvas.SetTop(_player, 374);
-            canvas.Children.Add(canvas);
+            canvas.Children.Add(_player);
             Content = canvas;
             _presenter = new GamePresenter(this);
             _presenter.Start();
