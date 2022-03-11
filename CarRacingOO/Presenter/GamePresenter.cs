@@ -28,7 +28,9 @@ namespace CarRacingOO.Presenter
         private void Update(object? sender, EventArgs e)
         {
             _game.GameLoop();
-            _gameWindow.SetPlayerX(_game.Player.X);
+            _gameWindow
+                .SetPlayerX(_game.Player.X)
+                .UpdateRoadMarks(_game.Speed);
         }
 
         public void SetMove(bool isLeft, bool isMove)
