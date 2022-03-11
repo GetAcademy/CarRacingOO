@@ -24,7 +24,7 @@ namespace CarRacingOO.View
 
             canvas.KeyDown += UpdateKeys;
             canvas.KeyUp += UpdateKeys;
-            canvas.Children.Clear();
+            canvas.Focus();
             _player = CreateRectangle(Colors.Yellow);
             Canvas.SetTop(_player, 374);
             canvas.Children.Add(_player);
