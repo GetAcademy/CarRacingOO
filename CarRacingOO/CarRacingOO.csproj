@@ -8,8 +8,57 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="Presenter\" />
+    <None Remove="View\images\car1.png" />
+    <None Remove="View\images\car2.png" />
+    <None Remove="View\images\car3.png" />
+    <None Remove="View\images\car4.png" />
+    <None Remove="View\images\car5.png" />
+    <None Remove="View\images\car6.png" />
+    <None Remove="View\images\playerImage.png" />
+    <None Remove="View\images\powermode1.png" />
+    <None Remove="View\images\powermode2.png" />
+    <None Remove="View\images\powermode3.png" />
+    <None Remove="View\images\powermode4.png" />
+    <None Remove="View\images\star.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="View\images\car1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\images\car2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\images\car3.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\images\car4.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\images\car5.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\images\car6.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\images\playerImage.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\images\powermode1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\images\powermode2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\images\powermode3.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\images\powermode4.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\images\star.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
