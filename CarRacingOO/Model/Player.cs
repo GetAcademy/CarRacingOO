@@ -6,14 +6,14 @@ namespace CarRacingOO.Model
     {
         public int X { get; private set; }
         private Direction _direction;
-        private int _speed;
+        private readonly int _speedX;
         private readonly int _maxX;
 
         public Player(int startX, int maxX)
         {
             _maxX = maxX;
             X = startX;
-            _speed = 10;
+            _speedX = 10;
         }
 
         public void SetDirection(bool isLeft, bool isMove)
@@ -25,7 +25,7 @@ namespace CarRacingOO.Model
 
         public void Move()
         {
-            var delta = _speed * (int) _direction;
+            var delta = _speedX * (int) _direction;
             X = Math.Clamp(X + delta, 0, _maxX);
         }
     }

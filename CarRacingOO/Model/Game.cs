@@ -1,4 +1,6 @@
-﻿namespace CarRacingOO.Model
+﻿using System;
+
+namespace CarRacingOO.Model
 {
     internal class Game
     {
@@ -18,6 +20,8 @@
         public void GameLoop()
         {
             Player.Move();
+            Cars[0].Move(Speed);
+            Cars[1].Move(Speed);
         }
     }
 }
