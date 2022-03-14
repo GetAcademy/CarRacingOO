@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Threading;
 using CarRacingOO.Model;
 using CarRacingOO.View;
@@ -30,7 +31,8 @@ namespace CarRacingOO.Presenter
             _game.GameLoop();
             _gameWindow
                 .SetPlayerX(_game.Player.X)
-                .UpdateRoadMarks(_game.Speed);
+                .UpdateRoadMarks(_game.Speed)
+                .UpdateCars(_game.Cars.Select(c=>c.Position).ToArray());
         }
 
         public void SetMove(bool isLeft, bool isMove)

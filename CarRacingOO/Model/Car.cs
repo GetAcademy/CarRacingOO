@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 
 namespace CarRacingOO.Model
 {
@@ -6,6 +7,7 @@ namespace CarRacingOO.Model
     {
         public int X { get; private set; }
         public int Y { get; private set; }
+        public Vector Position => new(X, Y);
         public Car()
         {
             X = MyRandom.Instance.Next(0, 430);

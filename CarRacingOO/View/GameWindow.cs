@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -12,8 +13,9 @@ namespace CarRacingOO.View
     {
         private readonly Rectangle _player;
         private readonly GamePresenter _presenter;
-        private Canvas _canvas;
+        private readonly Canvas _canvas;
         private readonly Rectangle[] _roadMarks;
+        private readonly Rectangle[] _cars;
 
         public GameWindow()
         {
@@ -33,6 +35,7 @@ namespace CarRacingOO.View
             _roadMarks = Enumerable.Range(0, 4).Select(
                 i => Add(CreateRoadMark(), 237, i*170-152)).ToArray();
             _player = Add(CreateRectangle(Colors.Yellow), null, 374);
+            _cars = new[] { Add(CreateRectangle(Colors.Blue)) , Add(CreateRectangle(Colors.Purple)) };
 
             Content = _canvas;
             _presenter = new GamePresenter(this);
@@ -64,6 +67,18 @@ namespace CarRacingOO.View
         public GameWindow SetPlayerX(int playerX)
         {
             Canvas.SetLeft(_player, playerX);
+            return this;
+        }
+
+        public GameWindow UpdateCars(Vector[] carPositions)
+        {
+            for (var i = 0; i < _cars.Length; i++)
+            {
+                var car = _cars[i];
+                var position = carPositions[i];
+                Canvas.SetLeft(car, position.X);
+                Canvas.SetTop(car, position.Y);
+            }
             return this;
         }
 
