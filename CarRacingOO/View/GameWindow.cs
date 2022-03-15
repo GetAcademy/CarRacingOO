@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CarRacingOO.Presenter;
 
@@ -35,6 +37,7 @@ namespace CarRacingOO.View
             _roadMarks = Enumerable.Range(0, 4).Select(
                 i => Add(CreateRoadMark(), 237, i*170-152)).ToArray();
             _player = Add(CreateRectangle(Colors.Yellow), null, 374);
+            _player.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/View/images/playerImage.png")));
             _cars = new[] { Add(CreateRectangle(Colors.Blue)) , Add(CreateRectangle(Colors.Purple)) };
 
             Content = _canvas;
