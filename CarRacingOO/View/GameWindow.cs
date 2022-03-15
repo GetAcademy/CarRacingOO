@@ -61,6 +61,8 @@ namespace CarRacingOO.View
             return rectangle;
         }
 
+        private static ImageBrush CreateImage(string fileName)
+            => new(new BitmapImage(new Uri($"pack://application:,,,/View/images/{fileName}.png")));
         private static Rectangle CreateRectangle(Color color, int width = 55, int height = 80)
             => new() { Fill = new SolidColorBrush(color), Height = height, Width = width };
 
