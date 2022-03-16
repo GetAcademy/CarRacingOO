@@ -8,7 +8,7 @@ namespace CarRacingOO.Model
         public Vector Position { get; }
         public Vector Size { get; }
 
-        public Rectangle(int x, int y, int width, int height)
+        public Rectangle(double x, double y, double width, double height)
             : this(new Vector(x, y), new Vector(width, height))
         {
         }
