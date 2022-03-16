@@ -5,9 +5,13 @@ namespace CarRacingOO.Model
 {
     internal class Rectangle
     {
-        public Vector Position { get; private set; }
-        public Vector Size { get; private set; }
+        public Vector Position { get; }
+        public Vector Size { get; }
 
+        public Rectangle(int x, int y, int width, int height)
+            : this(new Vector(x, y), new Vector(width, height))
+        {
+        }
 
         public Rectangle(Vector position, Vector size)
         {
