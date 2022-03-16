@@ -8,11 +8,13 @@ namespace CarRacingOO.Model
         public Car[] Cars { get; }
         public Star Star { get; }
         public int Speed { get; }
+        public int Width { get; } = 508;
+        public int Height { get; } = 500;
 
         public Game()
         {
             Player = new Player(222, 453);
-            Cars = new[] { new Car(), new Car() };
+            Cars = new[] { new Car(this), new Car(this) };
             Star = new Star();
             Speed = 15;
         }

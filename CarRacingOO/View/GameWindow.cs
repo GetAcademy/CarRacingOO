@@ -61,14 +61,6 @@ namespace CarRacingOO.View
             return rectangle;
         }
 
-        private static ImageBrush CreateImage(string fileName)
-            => new(new BitmapImage(new Uri($"pack://application:,,,/View/images/{fileName}.png")));
-        private static Rectangle CreateRectangle(Color color, int width = 55, int height = 80)
-            => new() { Fill = new SolidColorBrush(color), Height = height, Width = width };
-
-        private static Rectangle CreateRoadMark()
-            => new() { Fill = new SolidColorBrush(Colors.White), Height = 106, Width = 20 };
-
         public GameWindow SetPlayerX(int playerX)
         {
             Canvas.SetLeft(_player, playerX);
@@ -96,5 +88,13 @@ namespace CarRacingOO.View
             }
             return this;
         }
+
+        private static ImageBrush CreateImage(string fileName)
+            => new(new BitmapImage(new Uri($"pack://application:,,,/View/images/{fileName}.png")));
+        private static Rectangle CreateRectangle(Color color, int width = 55, int height = 80)
+            => new() { Fill = new SolidColorBrush(color), Height = height, Width = width };
+
+        private static Rectangle CreateRoadMark()
+            => new() { Fill = new SolidColorBrush(Colors.White), Height = 106, Width = 20 };
     }
 }
