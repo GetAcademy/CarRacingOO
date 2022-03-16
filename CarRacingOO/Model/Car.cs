@@ -5,7 +5,7 @@ namespace CarRacingOO.Model
 {
     internal class Car
     {
-        private Game _game;
+        private readonly Game _game;
         public int X { get; private set; }
         public int Y { get; private set; }
         public int ImageIndex { get; private set; }

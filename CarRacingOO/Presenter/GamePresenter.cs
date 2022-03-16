@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Threading;
 using CarRacingOO.Model;
 using CarRacingOO.View;
+using Car = CarRacingOO.View.Car;
 
 namespace CarRacingOO.Presenter
 {
@@ -32,7 +33,7 @@ namespace CarRacingOO.Presenter
             _gameWindow
                 .SetPlayerX(_game.Player.X)
                 .UpdateRoadMarks(_game.Speed)
-                .UpdateCars(_game.Cars.Select(c=>c.Position).ToArray());
+                .UpdateCars(_game.Cars.Select(c=>new Car(c.Position, c.ImageIndex)));
         }
 
         public void SetMove(bool isLeft, bool isMove)

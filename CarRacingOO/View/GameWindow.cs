@@ -72,15 +72,16 @@ namespace CarRacingOO.View
             return this;
         }
 
-        public GameWindow UpdateCars(Vector[] carPositions)
+        public GameWindow UpdateCars(IEnumerable<Car> cars)
         {
-            for (var i = 0; i < _cars.Length; i++)
+            var index = 0;
+            foreach (var car in cars)
             {
-                var car = _cars[i];
-                var position = carPositions[i];
-                Canvas.SetLeft(car, position.X);
-                Canvas.SetTop(car, position.Y);
-                car.Fill = _carImages[i];
+                var carRectangle = _cars[index];
+                Canvas.SetLeft(carRectangle, car.Position.X);
+                Canvas.SetTop(carRectangle, car.Position.Y);
+                carRectangle.Fill = _carImages[car.ImageIndex];
+                index++;
             }
             return this;
         }
