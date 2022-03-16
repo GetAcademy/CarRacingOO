@@ -18,6 +18,7 @@ namespace CarRacingOO.View
         private readonly Canvas _canvas;
         private readonly Rectangle[] _roadMarks;
         private readonly Rectangle[] _cars;
+        private readonly ImageBrush[] _carImages;
 
         public GameWindow()
         {
@@ -37,8 +38,12 @@ namespace CarRacingOO.View
             _roadMarks = Enumerable.Range(0, 4).Select(
                 i => Add(CreateRoadMark(), 237, i*170-152)).ToArray();
             _player = Add(CreateRectangle(Colors.Yellow), null, 374);
-            _player.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/View/images/playerImage.png")));
+            _player.Fill = CreateImage("playerImage");
             _cars = new[] { Add(CreateRectangle(Colors.Blue)) , Add(CreateRectangle(Colors.Purple)) };
+            _carImages = Enumerable
+                .Range(0, 6)
+                .Select(n => CreateImage("car" + (n+1)))
+                .ToArray();
 
             Content = _canvas;
             _presenter = new GamePresenter(this);
@@ -75,6 +80,7 @@ namespace CarRacingOO.View
                 var position = carPositions[i];
                 Canvas.SetLeft(car, position.X);
                 Canvas.SetTop(car, position.Y);
+                car.Fill = _carImages[i];
             }
             return this;
         }

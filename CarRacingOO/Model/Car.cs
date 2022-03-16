@@ -20,7 +20,7 @@ namespace CarRacingOO.Model
         {
             X = MyRandom.Instance.Next(0, 430);
             Y = MyRandom.Instance.Next(-400, -100);
-            ImageIndex = MyRandom.Instance.Next(1, 6);
+            ImageIndex = MyRandom.Instance.Next(0, 5);
         }
 
         public void Move(int speedY)
