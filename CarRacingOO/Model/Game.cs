@@ -10,6 +10,7 @@ namespace CarRacingOO.Model
         public int Speed { get; }
         public int Width { get; } = 508;
         public int Height { get; } = 500;
+        public bool IsRunning { get; private set; }
 
         public Game()
         {
