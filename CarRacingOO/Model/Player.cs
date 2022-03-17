@@ -7,7 +7,7 @@ namespace CarRacingOO.Model
     {
         public Vector PositionLeft { get; private set; }
         public Vector PositionRight => PositionLeft + _size;
-        private readonly Vector _size = new Vector(11, 0);
+        private readonly Vector _size = new Vector(11, 15);
         private Direction _direction;
         private readonly int _speedX;
 

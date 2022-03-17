@@ -7,8 +7,8 @@ namespace CarRacingOO.Model
 {
     internal class Car
     {
-        private readonly Vector _size = new(11, 20);
-        public Rectangle Rectangle { get; private set; }
+        private readonly Vector _size = new(11, 15);
+        public Rectangle Rectangle { get; private set; } = null!;
         public int ImageIndex { get; private set; }
         public Car()
         {
