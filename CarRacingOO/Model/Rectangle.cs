@@ -38,10 +38,10 @@ namespace CarRacingOO.Model
 
         public bool Contains(Vector position)
         {
-            var x1 = position.X;
-            var y1 = position.Y;
-            var x2 = position.X + Size.X;
-            var y2 = position.Y + Size.Y;
+            var x1 = Position.X;
+            var y1 = Position.Y;
+            var x2 = Position.X + Size.X;
+            var y2 = Position.Y + Size.Y;
             return position.X >= x1 && position.X <= x2 &&
                    position.Y >= y1 && position.Y <= y2;
         }
