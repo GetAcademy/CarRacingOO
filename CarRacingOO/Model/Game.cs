@@ -16,11 +16,11 @@ namespace CarRacingOO.Model
 
         public Game()
         {
-            //Player = new Player(222, 453);
             Player = new Player(44, 90);
             Cars = new[] { new Car(), new Car() };
             Star = new Star();
-            Speed = 3;
+            Speed = 2;
+            IsRunning = true;
         }
 
         public void GameLoop()

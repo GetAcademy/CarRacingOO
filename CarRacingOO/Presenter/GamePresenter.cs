@@ -12,6 +12,7 @@ namespace CarRacingOO.Presenter
         private readonly Game _game;
         private readonly GameWindow _gameWindow;
         private readonly DispatcherTimer _timer;
+        private const int SizeFactor = 5;
 
         public GamePresenter(GameWindow gameWindow)
         {
@@ -32,8 +33,8 @@ namespace CarRacingOO.Presenter
             _game.GameLoop();
             _gameWindow
                 .SetPlayerX(_game.Player.X)
-                .UpdateRoadMarks(_game.Speed*3)
-                .UpdateCars(_game.Cars.Select(c=>new Car(c.Rectangle.Position, c.ImageIndex)));
+                .UpdateRoadMarks(_game.Speed * SizeFactor)
+                .UpdateCars(_game.Cars.Select(c => new Car(c.Rectangle.Position, c.ImageIndex)));
             //if (!_game.IsRunning)
             //{
             //    _timer.Stop();
