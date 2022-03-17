@@ -15,7 +15,7 @@ namespace CarRacingOO.Model
         private void Reset()
         {
             var x = MyRandom.Instance.Next(0, 86);
-            var y = MyRandom.Instance.Next(-20, -80);
+            var y = MyRandom.Instance.Next(-80, -20);
             Rectangle = new Rectangle(x, y, _size);
         }
 

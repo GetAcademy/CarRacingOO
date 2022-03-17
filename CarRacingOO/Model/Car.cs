@@ -36,5 +36,10 @@ namespace CarRacingOO.Model
         {
             return positions.Any(Rectangle.Contains);
         }
+
+        public bool CrashesWith(Player player)
+        {
+            return Contains(player.PositionLeft, player.PositionRight);
+        }
     }
 }

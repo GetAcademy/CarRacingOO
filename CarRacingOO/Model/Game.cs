@@ -30,17 +30,20 @@ namespace CarRacingOO.Model
             Player.Move();
             Cars[0].Move(Speed);
             Cars[1].Move(Speed);
+            UpdateStar();
+            IsRunning = !Cars.Any(car => car.CrashesWith(Player));
+        }
+
+        private void UpdateStar()
+        {
             if (Star != null)
             {
                 var stillExists = Star.Move(Speed);
                 if (!stillExists) Star = null;
-            } else if (--_starCounter < 1)
+            }
+            else if (--_starCounter < 1)
             {
                 Star = new Star();
-            }
-            if (Cars.Any(car => car.Contains(Player.PositionLeft, Player.PositionRight)))
-            {
-                IsRunning = false;
             }
         }
     }
