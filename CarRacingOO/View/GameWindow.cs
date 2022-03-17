@@ -68,7 +68,7 @@ namespace CarRacingOO.View
 
         public GameWindow SetPlayerX(int playerX)
         {
-            Canvas.SetLeft(_player, playerX);
+            Canvas.SetLeft(_player, playerX*5);
             return this;
         }
 
@@ -78,8 +78,8 @@ namespace CarRacingOO.View
             foreach (var car in cars)
             {
                 var carRectangle = _cars[index];
-                Canvas.SetLeft(carRectangle, car.Position.X);
-                Canvas.SetTop(carRectangle, car.Position.Y);
+                Canvas.SetLeft(carRectangle, car.Position.X*5);
+                Canvas.SetTop(carRectangle, car.Position.Y*5);
                 carRectangle.Fill = _carImages[car.ImageIndex];
                 index++;
             }

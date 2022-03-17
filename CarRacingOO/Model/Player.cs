@@ -13,7 +13,7 @@ namespace CarRacingOO.Model
         {
             _maxX = maxX;
             X = startX;
-            _speedX = 10;
+            _speedX = 2;
         }
 
         public void SetDirection(bool isLeft, bool isMove)

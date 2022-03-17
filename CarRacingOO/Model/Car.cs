@@ -16,8 +16,8 @@ namespace CarRacingOO.Model
 
         private void Reset()
         {
-            var x = MyRandom.Instance.Next(0, 430);
-            var y = MyRandom.Instance.Next(-400, -100);
+            var x = MyRandom.Instance.Next(0, 89);
+            var y = MyRandom.Instance.Next(-80, -20);
             ImageIndex = MyRandom.Instance.Next(0, 5);
             Rectangle = new Rectangle(x, y, Width, Height);
         }
