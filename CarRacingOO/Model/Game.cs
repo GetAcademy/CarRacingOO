@@ -29,7 +29,10 @@ namespace CarRacingOO.Model
             Player.Move();
             Cars[0].Move(Speed);
             Cars[1].Move(Speed);
-            //if(Cars.Any(car=>Player.))
+            if (Cars.Any(car => car.Contains(Player.PositionLeft, Player.PositionRight)))
+            {
+                IsRunning = false;
+            }
         }
     }
 }

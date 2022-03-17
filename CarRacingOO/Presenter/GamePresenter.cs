@@ -35,10 +35,10 @@ namespace CarRacingOO.Presenter
                 .SetPlayerX(_game.Player.PositionLeft.X)
                 .UpdateRoadMarks(_game.Speed * SizeFactor)
                 .UpdateCars(_game.Cars.Select(c => new Car(c.Rectangle.Position, c.ImageIndex)));
-            //if (!_game.IsRunning)
-            //{
-            //    _timer.Stop();
-            //}
+            if (!_game.IsRunning)
+            {
+                _timer.Stop();
+            }
         }
 
         public void SetMove(bool isLeft, bool isMove)

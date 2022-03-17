@@ -6,8 +6,8 @@ namespace CarRacingOO.Model
     internal class Player
     {
         public Vector PositionLeft { get; private set; }
-        public Vector PositionRight => PositionLeft;
-        private readonly Vector _size = new Vector(11, 16);
+        public Vector PositionRight => PositionLeft + _size;
+        private readonly Vector _size = new Vector(11, 0);
         private Direction _direction;
         private readonly int _speedX;
 

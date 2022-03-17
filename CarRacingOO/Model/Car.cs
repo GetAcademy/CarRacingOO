@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace CarRacingOO.Model
@@ -28,6 +30,11 @@ namespace CarRacingOO.Model
             y += speedY;
             if (y > 100) Reset();
             else Rectangle = new Rectangle(x, y, _size);
+        }
+
+        public bool Contains(params Vector[] positions)
+        {
+            return positions.Any(Rectangle.Contains);
         }
     }
 }
