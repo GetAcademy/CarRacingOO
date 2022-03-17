@@ -5,8 +5,7 @@ namespace CarRacingOO.Model
 {
     internal class Car
     {
-        private const int Width = 11;
-        private const int Height = 20;
+        private readonly Vector _size = new(11, 20);
         public Rectangle Rectangle { get; private set; }
         public int ImageIndex { get; private set; }
         public Car()
@@ -19,7 +18,7 @@ namespace CarRacingOO.Model
             var x = MyRandom.Instance.Next(0, 89);
             var y = MyRandom.Instance.Next(-80, -20);
             ImageIndex = MyRandom.Instance.Next(0, 5);
-            Rectangle = new Rectangle(x, y, Width, Height);
+            Rectangle = new Rectangle(x, y, _size);
         }
 
         public void Move(int speedY)
@@ -28,7 +27,7 @@ namespace CarRacingOO.Model
             var y = Rectangle.Position.Y;
             y += speedY;
             if (y > 100) Reset();
-            else Rectangle = new Rectangle(x, y, Width, Height);
+            else Rectangle = new Rectangle(x, y, _size);
         }
     }
 }

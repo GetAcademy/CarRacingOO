@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace CarRacingOO.Model
 {
@@ -16,7 +17,7 @@ namespace CarRacingOO.Model
 
         public Game()
         {
-            Player = new Player(44, 90);
+            Player = new Player();
             Cars = new[] { new Car(), new Car() };
             Star = new Star();
             Speed = 2;
@@ -28,6 +29,7 @@ namespace CarRacingOO.Model
             Player.Move();
             Cars[0].Move(Speed);
             Cars[1].Move(Speed);
+            //if(Cars.Any(car=>Player.))
         }
     }
 }

@@ -9,7 +9,12 @@ namespace CarRacingOO.Model
         public Vector Size { get; }
 
         public Rectangle(double x, double y, double width, double height)
-            : this(new Vector(x, y), new Vector(width, height))
+            : this(x, y, new Vector(width, height))
+        {
+        }
+
+        public Rectangle(double x, double y, Vector size)
+            : this(new Vector(x, y), size)
         {
         }
 

@@ -66,7 +66,7 @@ namespace CarRacingOO.View
             return rectangle;
         }
 
-        public GameWindow SetPlayerX(int playerX)
+        public GameWindow SetPlayerX(double playerX)
         {
             Canvas.SetLeft(_player, playerX*5);
             return this;
