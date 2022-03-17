@@ -11,15 +11,16 @@ namespace CarRacingOO.Model
          */
         public Player Player { get; }
         public Car[] Cars { get; }
-        public Star Star { get; }
+        public Star? Star { get; private set; }
         public int Speed { get; }
         public bool IsRunning { get; private set; }
+
+        private int _starCounter = 30;
 
         public Game()
         {
             Player = new Player();
             Cars = new[] { new Car(), new Car() };
-            Star = new Star();
             Speed = 2;
             IsRunning = true;
         }
@@ -29,6 +30,14 @@ namespace CarRacingOO.Model
             Player.Move();
             Cars[0].Move(Speed);
             Cars[1].Move(Speed);
+            if (Star != null)
+            {
+                var stillExists = Star.Move(Speed);
+                if (!stillExists) Star = null;
+            } else if (--_starCounter < 1)
+            {
+                Star = new Star();
+            }
             if (Cars.Any(car => car.Contains(Player.PositionLeft, Player.PositionRight)))
             {
                 IsRunning = false;

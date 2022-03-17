@@ -34,7 +34,8 @@ namespace CarRacingOO.Presenter
             _gameWindow
                 .SetPlayerX(_game.Player.PositionLeft.X)
                 .UpdateRoadMarks(_game.Speed * SizeFactor)
-                .UpdateCars(_game.Cars.Select(c => new Car(c.Rectangle.Position, c.ImageIndex)));
+                .UpdateCars(_game.Cars.Select(c => new Car(c.Rectangle.Position, c.ImageIndex)))
+                .UpdateStar(_game.Star?.Rectangle.Position);
             if (!_game.IsRunning)
             {
                 _timer.Stop();

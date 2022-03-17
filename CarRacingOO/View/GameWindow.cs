@@ -18,6 +18,7 @@ namespace CarRacingOO.View
         private readonly Canvas _canvas;
         private readonly Rectangle[] _roadMarks;
         private readonly Rectangle[] _cars;
+        private readonly Rectangle _star;
         private readonly ImageBrush[] _carImages;
 
         public GameWindow()
@@ -44,6 +45,8 @@ namespace CarRacingOO.View
                 .Range(0, 6)
                 .Select(n => CreateImage("car" + (n+1)))
                 .ToArray();
+            _star = CreateRectangle(Colors.Yellow);
+            _star.Fill = CreateImage("star");
 
             Content = _canvas;
             _presenter = new GamePresenter(this);
@@ -68,7 +71,7 @@ namespace CarRacingOO.View
 
         public GameWindow SetPlayerX(double playerX)
         {
-            Canvas.SetLeft(_player, playerX*5);
+            Canvas.SetLeft(_player, playerX);
             return this;
         }
 
@@ -78,8 +81,7 @@ namespace CarRacingOO.View
             foreach (var car in cars)
             {
                 var carRectangle = _cars[index];
-                Canvas.SetLeft(carRectangle, car.Position.X*5);
-                Canvas.SetTop(carRectangle, car.Position.Y*5);
+                SetPosition(carRectangle, car.Position);
                 carRectangle.Fill = _carImages[car.ImageIndex];
                 index++;
             }
@@ -94,6 +96,33 @@ namespace CarRacingOO.View
                 Canvas.SetTop(roadMark, top > 510 ? -152 : top);
             }
             return this;
+        }
+
+        public GameWindow UpdateStar(Vector? starPosition)
+        {
+            if (starPosition == null)
+            {
+                if (_canvas.Children.Contains(_star))
+                {
+                    _canvas.Children.Remove(_star);
+                }
+            }
+            else
+            {
+                if (!_canvas.Children.Contains(_star))
+                {
+                    _canvas.Children.Add(_star);
+                }
+                SetPosition(_star, starPosition.Value);
+            }
+
+            return this;
+        }
+
+        private static void SetPosition(Rectangle rectangle, Vector position)
+        {
+            Canvas.SetLeft(rectangle, position.X);
+            Canvas.SetTop(rectangle, position.Y);
         }
 
         private static ImageBrush CreateImage(string fileName)
