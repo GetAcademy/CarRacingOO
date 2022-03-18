@@ -45,7 +45,7 @@ namespace CarRacingOO.View
                 .Range(0, 6)
                 .Select(n => CreateImage("car" + (n+1)))
                 .ToArray();
-            _star = CreateRectangle(Colors.Yellow);
+            _star = CreateRectangle(Colors.Yellow, 50, 50);
             _star.Fill = CreateImage("star");
 
             Content = _canvas;
