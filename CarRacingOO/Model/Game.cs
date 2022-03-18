@@ -39,13 +39,20 @@ namespace CarRacingOO.Model
             if (Star != null)
             {
                 var stillExists = Star.Move(Speed);
-                if(Star.CrashesWith(Player)|| !stillExists) Star = null;
+                var isStarCrash = Star.CrashesWith(Player);
+                if(isStarCrash|| !stillExists) Star = null;
+                if (isStarCrash) PowerUp();
             }
             else if (--_starCounter < 1)
             {
                 Star = new Star();
                 _starCounter = MyRandom.Instance.Next(600, 900);
             }
+        }
+
+        private void PowerUp()
+        {
+            
         }
     }
 }
