@@ -44,6 +44,7 @@ namespace CarRacingOO.Model
             else if (--_starCounter < 1)
             {
                 Star = new Star();
+                _starCounter = MyRandom.Instance.Next(600, 900);
             }
         }
     }
