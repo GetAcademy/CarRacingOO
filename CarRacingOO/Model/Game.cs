@@ -39,7 +39,7 @@ namespace CarRacingOO.Model
             if (Star != null)
             {
                 var stillExists = Star.Move(Speed);
-                if (!stillExists) Star = null;
+                if(Star.CrashesWith(Player)|| !stillExists) Star = null;
             }
             else if (--_starCounter < 1)
             {

@@ -24,17 +24,16 @@ namespace CarRacingOO.Model
             Size = size;
         }
 
-        //public bool Intersect(Rectangle otherRectangle)
-        //{
-        //    var corners = new[]
-        //    {
-        //        Position, 
-        //        Position + new Vector(Size.X, 0),
-        //        Position + new Vector(0, Size.Y),
-        //        Position + Size,
-        //    };
-        //    return corners.Any(otherRectangle.Contains);
-        //}
+        public bool Intersect(Rectangle otherRectangle)
+        {
+            return new[]
+            {
+                Position,
+                Position + new Vector(Size.X, 0),
+                Position + new Vector(0, Size.Y),
+                Position + Size,
+            }.Any(otherRectangle.Contains);
+        }
 
         public bool Contains(Vector position)
         {

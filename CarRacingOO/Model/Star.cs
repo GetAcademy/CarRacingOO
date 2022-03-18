@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 
 namespace CarRacingOO.Model
 {
@@ -29,9 +28,9 @@ namespace CarRacingOO.Model
             return true;
         }
 
-        public bool Contains(params Vector[] positions)
+        public bool CrashesWith(Player player)
         {
-            return positions.Any(Rectangle.Contains);
+            return Rectangle.Intersect(player.Rectangle);
         }
     }
 }

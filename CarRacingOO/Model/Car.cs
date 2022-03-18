@@ -39,7 +39,7 @@ namespace CarRacingOO.Model
 
         public bool CrashesWith(Player player)
         {
-            return Contains(player.PositionLeft, player.PositionRight);
+            return Rectangle.Intersect(player.Rectangle);
         }
     }
 }
