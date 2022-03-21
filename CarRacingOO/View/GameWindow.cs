@@ -22,6 +22,7 @@ namespace CarRacingOO.View
         private readonly ImageBrush[] _carImages;
         private readonly ImageBrush[] _playerPowerModeImages;
         private int _playerPowerModeImageIndex;
+        private readonly Label _label;
 
         public GameWindow()
         {
@@ -45,6 +46,8 @@ namespace CarRacingOO.View
             _cars = new[] { Add(CreateRectangle(Colors.Blue)) , Add(CreateRectangle(Colors.Purple)) };
             _carImages = CreateImageArray("car", 6);
             _playerPowerModeImages = CreateImageArray("powermode", 4);
+            _label = new Label {FontSize = 18, FontWeight = FontWeights.Bold};
+            _canvas.Children.Add(_label);
 
             _star = CreateRectangle(Colors.Yellow, 50, 50);
             _star.Fill = CreateImage("star");
@@ -123,8 +126,18 @@ namespace CarRacingOO.View
 
             return this;
         }
+        public GameWindow UpdateText(string text)
+        {
+            _label.Content = text;
+            return this;
+        }
 
-        private static void SetPosition(Rectangle rectangle, Vector position)
+        private static void SetPosition(UIElement rectangle, double x, double y)
+        {
+            SetPosition(rectangle, new Vector(x, y));
+        }
+
+        private static void SetPosition(UIElement rectangle, Vector position)
         {
             Canvas.SetLeft(rectangle, position.X);
             Canvas.SetTop(rectangle, position.Y);
