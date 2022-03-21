@@ -30,11 +30,23 @@ namespace CarRacingOO.Model
         public void GameLoop()
         {
             Player.Move();
-            Cars[0].Move(Speed);
-            Cars[1].Move(Speed);
+            var isStillAlive1 = UpdateCar(0);
+            var isStillAlive2 = UpdateCar(1);
             UpdatePowerMode();
             UpdateStar();
-            IsRunning = !Cars.Any(car => car.CrashesWith(Player));
+            IsRunning = isStillAlive1 && isStillAlive2;
+        }
+
+        private bool UpdateCar(int index)
+        {
+            var car = Cars[index];
+            car.Move(Speed);
+            var isCrash = car.CrashesWith(Player);
+            if (car.Y > 100 || isCrash && IsPowerMode)
+            {
+                car.Reset();
+            }
+            return IsPowerMode || !isCrash;
         }
 
         private void UpdatePowerMode()

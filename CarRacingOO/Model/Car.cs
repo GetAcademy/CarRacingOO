@@ -10,12 +10,13 @@ namespace CarRacingOO.Model
         private readonly Vector _size = new(11, 15);
         public Rectangle Rectangle { get; private set; } = null!;
         public int ImageIndex { get; private set; }
+        public double Y => Rectangle.Position.Y;
         public Car()
         {
             Reset();
         }
 
-        private void Reset()
+        public void Reset()
         {
             var x = MyRandom.Instance.Next(0, 89);
             var y = MyRandom.Instance.Next(-80, -20);
@@ -28,8 +29,7 @@ namespace CarRacingOO.Model
             var x = Rectangle.Position.X;
             var y = Rectangle.Position.Y;
             y += speedY;
-            if (y > 100) Reset();
-            else Rectangle = new Rectangle(x, y, _size);
+            Rectangle = new Rectangle(x, y, _size);
         }
 
         public bool Contains(params Vector[] positions)
