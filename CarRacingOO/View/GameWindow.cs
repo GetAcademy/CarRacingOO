@@ -20,6 +20,8 @@ namespace CarRacingOO.View
         private readonly Rectangle[] _cars;
         private readonly Rectangle _star;
         private readonly ImageBrush[] _carImages;
+        private readonly ImageBrush[] _playerPowerModeImages;
+        private int _playerPowerModeImageIndex;
 
         public GameWindow()
         {
@@ -41,10 +43,9 @@ namespace CarRacingOO.View
             _player = Add(CreateRectangle(Colors.Yellow), null, 374);
             _player.Fill = CreateImage("playerImage");
             _cars = new[] { Add(CreateRectangle(Colors.Blue)) , Add(CreateRectangle(Colors.Purple)) };
-            _carImages = Enumerable
-                .Range(0, 6)
-                .Select(n => CreateImage("car" + (n+1)))
-                .ToArray();
+            _carImages = CreateImageArray("car", 6);
+            _playerPowerModeImages = CreateImageArray("powermode", 4);
+
             _star = CreateRectangle(Colors.Yellow, 50, 50);
             _star.Fill = CreateImage("star");
 
@@ -73,6 +74,9 @@ namespace CarRacingOO.View
         {
             Canvas.SetLeft(_player, playerX);
             _canvas.Background = isPowerMode ? Brushes.LightCoral : Brushes.Gray;
+            if (!isPowerMode) return this;
+            _playerPowerModeImageIndex = (_playerPowerModeImageIndex + 1) % 8;
+            _player.Fill = _playerPowerModeImages[_playerPowerModeImageIndex / 2];
             return this;
         }
 
@@ -126,11 +130,15 @@ namespace CarRacingOO.View
             Canvas.SetTop(rectangle, position.Y);
         }
 
+        private static ImageBrush[] CreateImageArray(string baseName, int count)
+            => Enumerable
+                .Range(1, count)
+                .Select(n => CreateImage(baseName + n))
+                .ToArray();
         private static ImageBrush CreateImage(string fileName)
             => new(new BitmapImage(new Uri($"pack://application:,,,/View/images/{fileName}.png")));
         private static Rectangle CreateRectangle(Color color, int width = 55, int height = 80)
             => new() { Fill = new SolidColorBrush(color), Height = height, Width = width };
-
         private static Rectangle CreateRoadMark()
             => new() { Fill = new SolidColorBrush(Colors.White), Height = 106, Width = 20 };
     }
