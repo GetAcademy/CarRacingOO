@@ -18,7 +18,7 @@ namespace CarRacingOO.Model
             Rectangle = new Rectangle(x, y, _size);
         }
 
-        public bool Move(int speedY)
+        public bool Move(int speedY = 1)
         {
             var x = Rectangle.Position.X;
             var y = Rectangle.Position.Y;

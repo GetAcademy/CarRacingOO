@@ -48,7 +48,7 @@ namespace CarRacingOO.Model
         {
             if (Star != null)
             {
-                var stillExists = Star.Move(Speed);
+                var stillExists = Star.Move();
                 var isStarCrash = Star.CrashesWith(Player);
                 if(isStarCrash|| !stillExists) Star = null;
                 if (isStarCrash) PowerUp();
