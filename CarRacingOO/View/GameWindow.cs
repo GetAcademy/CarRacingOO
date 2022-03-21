@@ -20,6 +20,7 @@ namespace CarRacingOO.View
         private readonly Rectangle[] _cars;
         private readonly Rectangle _star;
         private readonly ImageBrush[] _carImages;
+        private bool _oldIsPowerMode = true;
 
         public GameWindow()
         {
@@ -69,9 +70,12 @@ namespace CarRacingOO.View
             return rectangle;
         }
 
-        public GameWindow SetPlayerX(double playerX)
+        public GameWindow UpdatePlayer(double playerX, bool isPowerMode)
         {
             Canvas.SetLeft(_player, playerX);
+            if (_oldIsPowerMode == isPowerMode) return this;
+            _canvas.Background = isPowerMode ? Brushes.LightCoral : Brushes.Gray;
+            _oldIsPowerMode = isPowerMode;
             return this;
         }
 

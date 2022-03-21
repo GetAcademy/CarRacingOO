@@ -14,8 +14,10 @@ namespace CarRacingOO.Model
         public Star? Star { get; private set; }
         public int Speed { get; }
         public bool IsRunning { get; private set; }
+        public bool IsPowerMode { get; private set; }
 
         private int _starCounter = 30;
+        private int _powerModeCounter = 200;
 
         public Game()
         {
@@ -30,8 +32,16 @@ namespace CarRacingOO.Model
             Player.Move();
             Cars[0].Move(Speed);
             Cars[1].Move(Speed);
+            UpdatePowerMode();
             UpdateStar();
             IsRunning = !Cars.Any(car => car.CrashesWith(Player));
+        }
+
+        private void UpdatePowerMode()
+        {
+            if (!IsPowerMode) return;
+            _powerModeCounter--;
+            IsPowerMode = _powerModeCounter > 0;
         }
 
         private void UpdateStar()
@@ -52,7 +62,8 @@ namespace CarRacingOO.Model
 
         private void PowerUp()
         {
-            
+            IsPowerMode = true;
+            _powerModeCounter = 200;
         }
     }
 }

@@ -32,7 +32,7 @@ namespace CarRacingOO.Presenter
         {
             _game.GameLoop();
             _gameWindow
-                .SetPlayerX(_game.Player.PositionLeft.X * SizeFactor)
+                .UpdatePlayer(_game.Player.PositionLeft.X * SizeFactor, _game.IsPowerMode)
                 .UpdateRoadMarks(_game.Speed * SizeFactor)
                 .UpdateCars(_game.Cars.Select(c => new Car(c.Rectangle.Position * SizeFactor, c.ImageIndex)))
                 .UpdateStar(_game.Star?.Rectangle.Position * SizeFactor);
