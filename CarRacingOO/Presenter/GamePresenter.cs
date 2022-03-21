@@ -50,11 +50,9 @@ namespace CarRacingOO.Presenter
 
         public void HandleEnter()
         {
-            if (!_game.IsRunning)
-            {
-                _game = new Game();
-                Start();
-            }
+            if (_game.IsRunning) return;
+            _game = new Game();
+            Start();
         }
     }
 }
