@@ -12,12 +12,16 @@ namespace CarRacingOO.Model
         public Player Player { get; }
         public Car[] Cars { get; }
         public Star? Star { get; private set; }
-        public int Speed { get; }
+        public double Speed { get; private set; }
         public bool IsRunning { get; private set; }
         public bool IsPowerMode { get; private set; }
 
+        public string Text => "Survived " + _score.ToString("#.#") + " Seconds"
+            + (IsRunning ? "" : " Press Enter to replay");
+
         private int _starCounter = 30;
         private int _powerModeCounter = 200;
+        private double _score;
 
         public Game()
         {
@@ -29,12 +33,20 @@ namespace CarRacingOO.Model
 
         public void GameLoop()
         {
+            _score += 0.05;
             Player.Move();
             var isStillAlive1 = UpdateCar(0);
             var isStillAlive2 = UpdateCar(1);
             UpdatePowerMode();
             UpdateStar();
+            UpdateSpeed();
             IsRunning = isStillAlive1 && isStillAlive2;
+        }
+
+        private void UpdateSpeed()
+        {
+            var speedLevel = Math.Floor(_score / 10);
+            Speed = speedLevel > 5 ? 4.4 : 2.0 + speedLevel * 0.4;
         }
 
         private bool UpdateCar(int index)
@@ -62,7 +74,7 @@ namespace CarRacingOO.Model
             {
                 var stillExists = Star.Move();
                 var isStarCrash = Star.CrashesWith(Player);
-                if(isStarCrash|| !stillExists) Star = null;
+                if (isStarCrash || !stillExists) Star = null;
                 if (isStarCrash) PowerUp();
             }
             else if (--_starCounter < 1)

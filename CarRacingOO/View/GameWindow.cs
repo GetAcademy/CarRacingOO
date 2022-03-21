@@ -93,7 +93,7 @@ namespace CarRacingOO.View
             return this;
         }
 
-        public GameWindow UpdateRoadMarks(int speed)
+        public GameWindow UpdateRoadMarks(double speed)
         {
             foreach (var roadMark in _roadMarks)
             {
