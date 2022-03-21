@@ -9,7 +9,7 @@ namespace CarRacingOO.Presenter
 {
     internal class GamePresenter
     {
-        private readonly Game _game;
+        private Game _game;
         private readonly GameWindow _gameWindow;
         private readonly DispatcherTimer _timer;
         private const int SizeFactor = 5;
@@ -52,6 +52,7 @@ namespace CarRacingOO.Presenter
         {
             if (!_game.IsRunning)
             {
+                _game = new Game();
                 Start();
             }
         }

@@ -40,13 +40,13 @@ namespace CarRacingOO.View
             _canvas.Focus();
 
             _roadMarks = Enumerable.Range(0, 4).Select(
-                i => Add(CreateRoadMark(), 237, i*170-152)).ToArray();
+                i => Add(CreateRoadMark(), 237, i * 170 - 152)).ToArray();
             _player = Add(CreateRectangle(Colors.Yellow), null, 374);
             _player.Fill = CreateImage("playerImage");
-            _cars = new[] { Add(CreateRectangle(Colors.Blue)) , Add(CreateRectangle(Colors.Purple)) };
+            _cars = new[] { Add(CreateRectangle(Colors.Blue)), Add(CreateRectangle(Colors.Purple)) };
             _carImages = CreateImageArray("car", 6);
             _playerPowerModeImages = CreateImageArray("powermode", 4);
-            _label = new Label {FontSize = 18, FontWeight = FontWeights.Bold};
+            _label = new Label { FontSize = 18, FontWeight = FontWeights.Bold };
             _canvas.Children.Add(_label);
 
             _star = CreateRectangle(Colors.Yellow, 50, 50);
@@ -62,7 +62,8 @@ namespace CarRacingOO.View
             if (e.Key is Key.Left or Key.Right)
             {
                 _presenter.SetMove(e.Key == Key.Left, e.IsDown);
-            } else if (e.Key == Key.Enter)
+            }
+            else if (e.Key == Key.Enter)
             {
                 _presenter.HandleEnter();
             }
@@ -103,7 +104,7 @@ namespace CarRacingOO.View
         {
             foreach (var roadMark in _roadMarks)
             {
-                var top = Canvas.GetTop(roadMark)+speed;
+                var top = Canvas.GetTop(roadMark) + speed;
                 Canvas.SetTop(roadMark, top > 510 ? -152 : top);
             }
             return this;
