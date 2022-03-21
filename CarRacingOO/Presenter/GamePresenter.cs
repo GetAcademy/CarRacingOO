@@ -47,5 +47,13 @@ namespace CarRacingOO.Presenter
         {
             _game.Player.SetDirection(isLeft, isMove);
         }
+
+        public void HandleEnter()
+        {
+            if (!_game.IsRunning)
+            {
+                Start();
+            }
+        }
     }
 }

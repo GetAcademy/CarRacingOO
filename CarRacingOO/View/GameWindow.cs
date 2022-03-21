@@ -62,6 +62,9 @@ namespace CarRacingOO.View
             if (e.Key is Key.Left or Key.Right)
             {
                 _presenter.SetMove(e.Key == Key.Left, e.IsDown);
+            } else if (e.Key == Key.Enter)
+            {
+                _presenter.HandleEnter();
             }
         }
 
